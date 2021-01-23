@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import axios from "axios";
 
@@ -6,35 +7,34 @@ function App() {
   const URL = "https://api.nasa.gov/neo/rest/v1/neo/browse?api_key=DEMO_KEY";
 
   // CALL TO API
+  const filter = [];
+  // CALL TO API
   useEffect(() => {
+    const fetchItems = async () => {
+      if (objectsOrbit != undefined) {
+        try {
+          const results = await axios.get(URL);
+          setObjectOrbit(results.data);
+
+          console.log("$$$$$$$$$$$$", objectsOrbit);
+          for (let object in objectsOrbit) {
+            filter.push([
+              objectsOrbit[object].name,
+              objectsOrbit[object].estimated_diameter.kilometers
+                .estimated_diameter_min,
+              objectsOrbit[object].estimated_diameter.kilometers
+                .estimated_diameter_max,
+            ]);
+          }
+          console.log("le filtre", filter);
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    };
     fetchItems();
   }, []);
 
-  const fetchItems = async () => {
-    if (objectsOrbit != null) {
-      try {
-        const results = await axios.get(URL);
-        // console.log("res.data !!!!! ", [results][0].data.near_earth_objects);
-        const nearObjects = [results][0].data.near_earth_objects;
-        const filter = [];
-
-        [nearObjects].map((result, index) => {
-          // console.log("name", result.length, typeof result);
-
-          return filter.push([
-            result[index].name,
-            result[index].estimated_diameter.kilometers.estimated_diameter_min,
-            result[index].estimated_diameter.kilometers.estimated_diameter_max,
-          ]);
-        });
-        console.log("filtered array", filter);
-
-        setObjectOrbit(filter);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-  };
   return (
     <div className="App">
       <p>work in progress</p>
