@@ -1,70 +1,49 @@
-# Getting Started with Create React App
+### 🇫🇷🇫🇷 Bonjour les devs ! 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## QUOI ?
+Ce challenge expoloite une api pour en afficher ses données en forme de graph, il se divise en 3 parties :
 
-## Available Scripts
+=> 1.Visualisation des données
+=> 2.Filtre des données
+=> 3.Jongler entre de différents mode d'affichage des données
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## COMMENT ?
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1.1 Création d'une app react : npx create-react-app
+1.2 Installation des dépendances du projets : axios et react-google-charts
+1.3 Utilisation de l'api donné : : https://api.nasa.gov/neo/rest/v1/neo/browse?api_key=DEMO_KEY
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+---
 
-### `npm test`
+## OÙ ?
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+A/ pour l'instant le projet en est à l'étape 1 
+B/ dernièr commit avant le rendu : "put the original api url back" 23/01/2021
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 🏴󠁧󠁢󠁥󠁮󠁧󠁿🏴󠁧󠁢󠁥󠁮󠁧󠁿 Hi devs !
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## WHAT ?
+This challenge aims to fetch data from an api and display the data received in a graph, can be divided unto 3 parts:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+=> Data visualisation
+=> Data filtering
+=> Switching between data display views
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## HOW ?
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1.1 Creating a react app : npx create-react-app
+1.2 Installing dependencies : axios and react-google-charts
+1.3 Use of provided api :  https://api.nasa.gov/neo/rest/v1/neo/browse?api_key=DEMO_KEY
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+---
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## WHERE ?
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+A/ at the moment the project is at stage 1
+B/ last commit before handing in the project : "put the original api url back" 23/01/2020 
