@@ -5,8 +5,7 @@ import Chart from "react-google-charts";
 
 function App() {
   const [objectsOrbit, setObjectOrbit] = useState([]);
-  const URL =
-    "https://api.nasa.gov/neo/rest/v1/neo/browse?api_key=lsSTPCrtqVp6SXWmcH8f4D3ecKBoTXkpyRI37AIP";
+  const URL = "https://api.nasa.gov/neo/rest/v1/neo/browse?api_key=DEMO_KEY";
 
   // CALL TO API
   const filter = [];
