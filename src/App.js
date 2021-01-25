@@ -1,63 +1,75 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
+// import { Line } from "react-chartjs-2";
 import axios from "axios";
 import Chart from "react-google-charts";
 
 function App() {
-  const [objectsOrbit, setObjectOrbit] = useState([]);
-  const URL = "https://api.nasa.gov/neo/rest/v1/neo/browse?api_key=DEMO_KEY";
+  const [data, setData] = useState([]);
+  console.log("data", data);
+  const [url, setUrl] = useState(
+    "https://api.nasa.gov/neo/rest/v1/neo/browse?api_key=lsSTPCrtqVp6SXWmcH8f4D3ecKBoTXkpyRI37AIP"
+  );
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+  const [chartData, setChartData] = useState([]);
+  console.log("chartDataaa", chartData);
 
-  // CALL TO API
-  const filter = [];
-  // CALL TO API
   useEffect(() => {
-    const fetchItems = async () => {
-      if (objectsOrbit !== undefined) {
-        try {
-          const results = await axios.get(URL);
-          setObjectOrbit(results.data);
-
-          console.log("$$$$$$$$$$$$", objectsOrbit);
-          for (let object in objectsOrbit) {
-            filter.push([
-              objectsOrbit[object].name,
-              objectsOrbit[object].estimated_diameter.kilometers
-                .estimated_diameter_min,
-              objectsOrbit[object].estimated_diameter.kilometers
-                .estimated_diameter_max,
-            ]);
-          }
-          console.log("le filtre", filter);
-        } catch (error) {
-          console.log(error);
-        }
+    const fetchData = async () => {
+      setError(false);
+      setLoading(true);
+      try {
+        const result = await axios(url);
+        setData(result.data.near_earth_objects);
+        console.log("$$$$$$$$$$$$", data);
+        const newData = data.map((item) => {
+          return [
+            item.name,
+            item.estimated_diameter.kilometers.estimated_diameter_min,
+            item.estimated_diameter.kilometers.estimated_diameter_max,
+          ];
+        });
+        newData.unshift(["legend vertical", "blue", "red"]);
+        setChartData(newData);
+        console.log("newData", newData);
+      } catch (error) {
+        setError(true);
       }
+      setLoading(false);
     };
-    fetchItems();
+    fetchData();
   }, []);
+
+  console.log("render");
 
   return (
     <div className="App">
-      <div style={{ display: "flex", maxWidth: 900 }}>
-        <Chart
-          width={400}
-          height={300}
-          chartType="BarChart"
-          loader={<div>Loading Chart</div>}
-          data={filter}
-          options={{
-            chartArea: { width: "30%" },
-            hAxis: {
-              title: "Min Estimated Diameter (km)",
-              minValue: 0,
-            },
-            vAxis: {
-              title: "Neo Name",
-            },
-          }}
-          legendToggle
-        />
-      </div>
+      {error && <div>Something went wrong ...</div>}
+      {loading ? (
+        <div>Loading ...</div>
+      ) : (
+        <div style={{ display: "flex" }}>
+          <Chart
+            width={800}
+            height={1000}
+            chartType="BarChart"
+            loader={<div>Loading Chart</div>}
+            data={chartData}
+            options={{
+              chartArea: { width: "30%" },
+              hAxis: {
+                title: "Min Estimated Diameter (km)",
+                minValue: 0,
+              },
+              vAxis: {
+                title: "NEO Name",
+              },
+            }}
+            legendToggle
+          />
+        </div>
+      )}
     </div>
   );
 }
